@@ -26,6 +26,12 @@
     \usepackage{breqn}
     \usepackage{enumerate}
     \usepackage{slashbox}
+\usepackage{outlines}
+\usepackage{enumitem}
+\setenumerate[1]{label=\Roman*.}
+\setenumerate[2]{label=\Alph*.}
+\setenumerate[3]{label=\roman*.}
+\setenumerate[4]{label=\alph*.}
 
     
     \newtheorem{theorem}{Theorem}[section]
@@ -71,6 +77,34 @@
 \thanks{Started Novemver 27, 2017. Last revised \today}
 
 \maketitle
+
+\section{Things to Do}
+
+\begin{outline}
+\1 Analyze antibiotics.txt using an ANOVA-design linear model and likelihood ratio test.
+	\2 Generate a plot to summarize the results of the experiment.
+	\2 Write code to perform an ANOVA test comparing the three different treatments and the control.
+	\2 Wirte a markdown document to summarize the results of the ANOVA test and make conclusions about hypotheses.
+\1 Analyze sugar.txt using a regression design linear model and likelihood ratio test.
+	\2 Generate a plot to summarize the results of the experiment.
+	\2 Using a regression-design linear model and a likelihood ratio test, test for significance of treatment.
+	\2 Write a markdown document to summarize the results and make conclusions about hypotheses.
+\1 Perform a statistical power analysis comparing ANOVA and regression-designed experiments.
+	\2 Assume a variable $y$ depends on an independent variable $x$ with slope $\beta_1=0.4$ and a $y$-intercept of $\beta_0=10$.  
+	\2 Compare regression-design to a two-level ANOVA with $24$ experimental units.
+		\3 Simulate $10$ random experiments with a regression design for $\sigma\in\{1,2,4,6,8,12,16,24\}$ for $x\in[0,50]$.
+		\3 Simulate $10$ random experiments with a two-level ANOVA design  $\sigma\in\{1,2,4,6,8,12,16,24\}$ $x\in[0,50]$.
+	\2 Compare regression-design to a four-level ANOVA with $24$ experimental units.
+		\3 Simulate $10$ random experiments with a regression design for $\sigma\in\{1,2,4,6,8,12,16,24\}$ for $x\in[0,50]$.
+		\3 Simulate $10$ random experiments with a four-level ANOVA design  $\sigma\in\{1,2,4,6,8,12,16,24\}$ $x\in[0,50]$.	
+	\2 Compare regression-design to an eight-level ANOVA with $24$ experimental units.
+		\3 Simulate $10$ random experiments with a regression design for $\sigma\in\{1,2,4,6,8,12,16,24\}$ for $x\in[0,50]$.
+		\3 Simulate $10$ random experiments with an eight-level ANOVA design  $\sigma\in\{1,2,4,6,8,12,16,24\}$ $x\in[0,50]$.
+	\2 Write a MarkDown file summarizing results
+		\3 How did the ANOVA vs regression design perform?
+			\4 Use the average $p$-values from the liklihood ratio tests across Monte-Carlo simulaitons as a metric of statistical power
+		\3 Does the relative performance of the experimental designs depend on the number of levels in the ANOVA experiment?
+\end{outline}
 
 
 
