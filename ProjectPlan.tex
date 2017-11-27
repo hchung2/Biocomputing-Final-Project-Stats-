@@ -1,0 +1,77 @@
+ \documentclass[reqno, 11pt]{amsart}
+\usepackage{pdfsync}
+    \usepackage{amsmath} 
+    \usepackage{amsthm}
+\usepackage{helvet}
+\usepackage{mathrsfs}
+    \usepackage{graphicx} 
+    \usepackage{caption}
+    \usepackage{subcaption}
+    \usepackage{float}
+    \usepackage{hyperref}
+    \hypersetup{
+        colorlinks=true,
+        linkcolor=blue,
+        filecolor=magenta,      
+        urlcolor=cyan,
+    }
+     
+    \urlstyle{same}
+    \usepackage{xcolor}
+    \usepackage{cancel}
+    \usepackage{listings}
+    \usepackage[margin=1in]{geometry}
+    \usepackage{amssymb}
+    \usepackage{amsthm}
+    \usepackage{breqn}
+    \usepackage{enumerate}
+    \usepackage{slashbox}
+
+    
+    \newtheorem{theorem}{Theorem}[section]
+	\newtheorem{axiom}[theorem]{Axiom}
+    \newtheorem{lemma}[theorem]{Lemma}
+    \newtheorem{prop}[theorem]{Proposition}
+    \newtheorem{cor}[theorem]{Corollary}
+    
+    \theoremstyle{definition}
+    \newtheorem{definition}[theorem]{Definition}
+    \newtheorem{example}[theorem]{Example}
+    \newtheorem{remark}[theorem]{Remark}
+    \newtheorem{xca}[theorem]{Exercise}
+    
+    \numberwithin{equation}{section}
+    
+    %\theoremstyle{remark}
+    %\newtheorem{remark}[theorem]{Remark}
+    
+    \newskip\aline \newskip\halfaline
+\aline=12pt plus 1pt minus 1pt \halfaline=6pt plus 1pt minus 1pt
+\def\skipaline{\vskip\aline}
+\def\skiphalfaline{\vskip\halfaline}
+
+\def\qedbox{$\rlap{$\sqcap$}\sqcup$}
+\def\qed{\nobreak\hfill\penalty250 \hbox{}\nobreak\hfill\qedbox\skipaline}
+
+\def\proofend{\eqno{\mbox{\qedbox}}}
+    
+ %blackboardbold
+    \newcommand{\bE}{\mathbb{E}}
+    \newcommand{\bP}{\mathbb{P}}
+    \newcommand{\bR}{\mathbb{R}}
+    
+%mathscr
+
+\newcommand{\eX}{\mathscr{X}}
+\newcommand{\eY}{\mathscr{Y}}
+    
+ \begin{document}
+
+\title{BioComputing Final Project}
+\thanks{Started Novemver 27, 2017. Last revised \today}
+
+\maketitle
+
+
+
+\end{document}
