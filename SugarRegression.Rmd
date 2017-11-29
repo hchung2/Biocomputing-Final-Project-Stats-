@@ -1,0 +1,42 @@
+---
+title: "Sugar Regression"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(knitr)
+```
+
+```{r readin,echo=FALSE}
+results <- read.csv('sugar.csv', header = TRUE, sep = ",")
+```
+
+We have data from an experiment evaluating the effect of sugar concentration on growth of *E. Coli* in lab cultures.  An overview of the data is presented below, both in tabular and graphical form:
+
+```{r summary, echo=FALSE}
+summary(results)
+```
+
+```{r Plot, echo=FALSE}
+d = ggplot(data=results,aes(x=sugar,y=growth))
+d+geom_point() + coord_cartesian()+ xlab("Sugar")+ylab("Growth")
+```
+
+Superficially, at least, this appears to indicate some sort of linear relationship.  We will test this by comparing the negative log likelihood functions of a constant model and a linear model using a likelihood ratio test.  First, however, we need hypotheses:
+
+* **Null Hypothesis:** The slope of a linear model fitted to the data is $0$.
+
+* **Alternate Hypothesis:** The slope of a linear model fitted to the data is not $0$.
+
+Let $G$ be a variable denoting the values for growth, $S$ be a variable denoting the values for sugar, and $\epsilon$ be an error term which is normally distributed with standard deviation $\sigma$.  Then we fit models of the form $G=\beta_0+\epsilon$ and $G=\beta_0+\beta_1S+\epsilon$ to the data.  An optimization run on the first model returned values of $\beta_0\approx 9.0559$ and $\sigma\approx 8.134$; an optimization run on thes second model returend values of $\beta_0\approx -0.85101$, $\beta_1\approx 1.7304$, and $\sigma\approx 2.3363$.  The negative log-likelihood for the constat model was approximately $56.2412$; for the linear model it was approximately $36.27864$.
+
+To implement the likelihood ratio test, we found the absolute values of the difference between the negative log-likelihood values, multiplied this by two.  As the size of the sample grows, this value approaches a chi-square distribution with $1$ degree of freedom, so we used a chi-square distribution with $1$ degree of freedom to find the p-value for the experiment.  
+
+The p-value was $p\approx 2.6389\times 10^{-10}$.  This value is quite small, so we reject the null hypothesis, and conclude that a linear fit correctly explains the patterns we see in the data.  We summarize this with another graph:
+
+```{r LinearPlot, echo=FALSE}
+e = ggplot(data=results,aes(x=sugar,y=growth))
+e+geom_point() + geom_smooth(method=lm,se=FALSE) + coord_cartesian()+ xlab("Sugar")+ylab("Growth")
+```
