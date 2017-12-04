@@ -45,10 +45,10 @@ kable(summarize(antibiotics[which(antibiotics$trt=="ab3"),],type='numeric'))
 kable(summarize(antibiotics[which(antibiotics$trt=="control"),],type='numeric'))
 ```
 
-By examining the data, we might expect **ab1** and **ab3** to be significantly different from the control group; **ab2** does not appear significantly different.  For $i\in\{1,2,3\}$ we have our hypotheses:
+By examining the data, we might expect **ab1** and **ab3** to be significantly different from the control group; **ab2** does not appear significantly different.  Let $\mu_0$ represent the mean of the control, $\mu_1$ represent the mean of **ab1**, $\mu_2$ represent the mean of **ab2**, and $\mu_3$ represent the mean of **ab3**.  Then we have our hypotheses:
 
-**Null Hypothesis $(H_0)$:**  There is not a significant difference between treatment **abi** and the **control** group.
+**Null Hypothesis $(H_0)$:**  There is not a significant difference in the means of the data: $\mu_0=\mu_1=\mu_2=\mu_3$.
 
-**Alternate Hypothesis $(H_1)$:**  There is a significant difference between treatment **abi** and the **control** group.  
+**Alternate Hypothesis $(H_1)$:**  At least one of the antibiotics **ab1**, **ab2**, **ab3** has a mean significantly different from the control group.  That is, for some $i\in\{1,2,3\}$ we have $\mu_i\neq\mu_0$.  
 
 To test these hypotheses we ran an ANOVA-design linear model, and compared the results using a likelihood ratio test.  
