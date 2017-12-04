@@ -1,0 +1,54 @@
+---
+title: "AntibioticsANOVA"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(knitr)
+library(papeR)
+```
+
+```{r readin,echo=FALSE}
+antibiotics <- read.csv('antibiotics.csv', header = TRUE, sep = ",")
+```
+
+A student has conducted an experiment evaluating the effect of three different antibiotics --- **ab1**, **ab2**, and **ab3** --- on the growth of *E. coli* in lab cultures.  The results are presented in graphical format below:
+
+```{r chicks, echo=FALSE}
+d = ggplot(data = antibiotics)
+d + geom_bar(aes(x=as.factor(trt),y=growth),stat="summary",
+             fun.y="mean",fill="blue",color="black") + theme_classic() +
+            xlab("Treatment")+ylab("Average Growth ")
+```
+
+We also include charts summarizing the data: one for the overall dataset, one for each type of treatment, and one for the control.
+
+```{r antisummary,echo=FALSE}
+kable(summarize(antibiotics,type='numeric'))
+```
+
+```{r ab1 summary, echo=FALSE}
+kable(summarize(antibiotics[which(antibiotics$trt=="ab1"),],type='numeric'))
+```
+
+```{r ab2 summary, echo=FALSE}
+kable(summarize(antibiotics[which(antibiotics$trt=="ab2"),],type='numeric'))
+```
+
+```{r ab3 summary, echo=FALSE}
+kable(summarize(antibiotics[which(antibiotics$trt=="ab3"),],type='numeric'))
+```
+
+```{r control summary, echo=FALSE, results='asis'}
+kable(summarize(antibiotics[which(antibiotics$trt=="control"),],type='numeric'))
+```
+
+By examining the data, we might expect **ab1** and **ab3** to be significantly different from the control group; **ab2** does not appear significantly different.  For $i\in\{1,2,3\}$ we have our hypotheses:
+
+**Null Hypothesis $(H_0)$:**  There is not a significant difference between treatment **abi** and the **control** group.
+
+**Alternate Hypothesis $(H_1)$:**  There is a significant difference between treatment **abi** and the **control** group.  
+
+To test these hypotheses we ran an ANOVA-design linear model, and compared the results using a likelihood ratio test.  
