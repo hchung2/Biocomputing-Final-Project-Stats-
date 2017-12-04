@@ -8,26 +8,20 @@ antibiotics = read.csv(file = "antibiotics.csv", header = TRUE, sep = ",")
 #Thus data should be a 7 by 5 matrix?
 
 #Loading control
-data=data.frame(matrix(ncol=7,nrow=4))
-colnames(data)=c("x","y","z","control","ab1","ab2","ab3")
-for (i in 1:4){
-data[i,4]=antibiotics[i,2]
-}
-
-#Loading ab1
-for (i in 1:4){
-  data[i,5]=antibiotics[i+4,2]
-}
-
-#Loading ab2
-for (i in 1:4){
-  data[i,6]=antibiotics[i+8,2]
-}
-
-#Loading ab3
-for (i in 1:4){
-  data[i,7]=antibiotics[i+12,2]
-}
+data1=antibiotics[which(antibiotics$trt=="control"),]
+data1[,1]=0
+ab10=antibiotics[which(antibiotics$trt=="ab1"),]
+ab10[,1]=0
+ab20=antibiotics[which(antibiotics$trt=="ab2"),]
+ab20[,1]=0
+ab30=antibiotics[which(antibiotics$trt=="ab3"),]
+ab30[,1]=0
+ab11=antibiotics[which(antibiotics$trt=="ab1"),]
+ab11[,1]=1
+ab21=antibiotics[which(antibiotics$trt=="ab2"),]
+ab21[,1]=1
+ab31=antibiotics[which(antibiotics$trt=="ab3"),]
+ab31[,1]=1
 
 
 #Make a custom function(params, observation)
@@ -45,7 +39,7 @@ Nullnllike<-function(p,y){
   nll=-sum(dnorm(x=y, mean=expected, sd=sigma, log = TRUE))
   return((nll))}
 
-nllike<-function(p,x,y,z,w){
+nllike<-function(p,x,y){
   B0=p[1]
   B1=p[2]
   sigma=exp(p[3])
