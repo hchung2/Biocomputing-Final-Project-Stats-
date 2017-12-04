@@ -1,8 +1,8 @@
 #Load csv file
 
-#Modify data so it works with ANOVA test - we live in R^4 I think
-#Model is a function f:R^3->R, so we need to take three vectors as inputs
-#Thus data should be a 3 by 5 matrix?
+#Modify data so it works with ANOVA test - 
+#y vector is a vector with control, ab's
+#x vector depends on what we wish to test?
 
 #Make a custom function(params, observation)
 # - unload parameters
