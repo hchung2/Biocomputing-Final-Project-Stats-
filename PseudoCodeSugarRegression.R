@@ -4,8 +4,9 @@
 
 #Make a custom function(params, observation)
 # - unload parameters
-# - Match parameters to linear model
+# - Match parameters to null model - B0+error
 # - dnorm(x,mean,sd)
+# - repeat process for linear - B0+B1x+error
 
 #Asses max likelihood of model parameters with optim()
 #   Create one function to fit a constant, and one to fit a linear model
