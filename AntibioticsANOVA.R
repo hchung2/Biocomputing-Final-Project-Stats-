@@ -52,4 +52,4 @@ NullFit=optim(NullGuess, Nullnllike, y=antibiotics$growth)
 #   pchisq(D,df=1)
 #   D = 2times difference of negative log-likelihood - these two values come from the different models
 D = -2*(Fit$value-NullFit$value)
-pval=pchisq(q=D, df=1, lower.tail=FALSE)
+pval=pchisq(q=D, df=3, lower.tail=FALSE)
