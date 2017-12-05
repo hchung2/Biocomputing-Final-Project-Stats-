@@ -1,8 +1,9 @@
 #Load csv file
 
 #Modify data so it works with ANOVA test - 
-#y vector is a vector with control, ab's
-#x vector depends on what we wish to test?
+#Setting up domain vectors for the antibiotic treatment
+#View the negative null likelihood function as a function f:R^3->R
+#Each vector has 1's where the corresponding treatment was effected; 0's otherwise
 
 #Make a custom function(params, observation)
 # - unload parameters

@@ -3,25 +3,12 @@ rm(list=ls())
 #Load csv file
 antibiotics = read.csv(file = "antibiotics.csv", header = TRUE, sep = ",")
 
-#Setting up data - want x vectors with 1's and 0's, y vector with growth values
-data1=antibiotics[which(antibiotics$trt=="control"),]
-data1[,1]=0
-ab10=antibiotics[which(antibiotics$trt=="ab1"),]
-ab10[,1]=0
-ab20=antibiotics[which(antibiotics$trt=="ab2"),]
-ab20[,1]=0
-ab30=antibiotics[which(antibiotics$trt=="ab3"),]
-ab30[,1]=0
-ab11=antibiotics[which(antibiotics$trt=="ab1"),]
-ab11[,1]=1
-ab21=antibiotics[which(antibiotics$trt=="ab2"),]
-ab21[,1]=1
-ab31=antibiotics[which(antibiotics$trt=="ab3"),]
-ab31[,1]=1
-#Combining Data
-ab1val=rbind(data1,ab11,ab20,ab30)
-ab2val=rbind(data1,ab10,ab21,ab30)
-ab3val=rbind(data1,ab10,ab20,ab31)
+#Setting up domain vectors for the antibiotic treatment
+#View the negative null likelihood function as a function f:R^3->R
+#Each vector has 1's where the corresponding treatment was effected; 0's otherwise
+ab1xval=c(0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0)
+ab2xval=c(0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0)
+ab3xval=c(0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1)
 
 
 #Make a custom function(params, observation)
@@ -56,17 +43,13 @@ nllike<-function(p,x,y,z,w){
 # - create vector with initial guess for each model
 #       -maybe look at data to guide guesses, because these models seem quite chaotic
 # - minimization function with appropriate arguments - use optim - store each model seperately
-
-#Testing ab1
 NullGuess=c(12.64321,1)
 Guess=c(12.64,-8.53,4.87679,-4.3,1)
-Fit=optim(Guess, nllike, x=ab1val$trt, y=ab1val$growth)
-NullFit=optim(NullGuess, Nullnllike, y=ab1val$growth)
+Fit=optim(Guess, nllike, x=ab1xval,y=ab2xval,z=ab3xval, w=antibiotics$growth)
+NullFit=optim(NullGuess, Nullnllike, y=antibiotics$growth)
 
 #Implement the liklihood ratio test
 #   pchisq(D,df=1)
 #   D = 2times difference of negative log-likelihood - these two values come from the different models
-
-#Test for ab1
-A = 2*(Fit$value-NullFit$value)
-ab1p=pchisq(q=A, df=1, lower.tail=FALSE)
+D = -2*(Fit$value-NullFit$value)
+pval=pchisq(q=D, df=1, lower.tail=FALSE)
