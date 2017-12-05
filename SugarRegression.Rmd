@@ -7,6 +7,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 library(knitr)
+library(papeR)
 ```
 
 ```{r readin,echo=FALSE}
@@ -16,7 +17,7 @@ results <- read.csv('sugar.csv', header = TRUE, sep = ",")
 We have data from an experiment evaluating the effect of sugar concentration on growth of *E. Coli* in lab cultures.  An overview of the data is presented below, both in tabular and graphical form:
 
 ```{r summary, echo=FALSE}
-summary(results)
+kable(summarize(results,type='numeric'))
 ```
 
 ```{r Plot, echo=FALSE}

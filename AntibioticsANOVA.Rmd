@@ -59,7 +59,7 @@ By examining the data, we might expect **ab1** and **ab3** to be significantly d
 
 **Alternate Hypothesis $(H_1)$:**  At least one of the antibiotics **ab1**, **ab2**, **ab3** has a mean significantly different from the control group.  That is, for some $i\in\{1,2,3\}$ we have $\mu_i\neq\mu_0$.  
 
-To test these hypotheses we ran an ANOVA-design linear model, and compared the results using a likelihood ratio test. Let $G$ denote growth, let $X_i$ denote treatment by **abi** for $i\in\{1,2,3\}$, and let $\epsilon$ denote a normally distributed error term.  We fit a null model of the form $G=\beta_0$ to this data, optimized for the value of $\beta_0$ which minimized the negative likelihood, and then stored that negative likelihood value.
+To test these hypotheses we ran an ANOVA-design linear model, and compared the results using a likelihood ratio test. Let $G$ denote growth, let $X_i$ denote treatment by **abi** for $i\in\{1,2,3\}$, and let $\epsilon$ denote a normally distributed error term.  We fit a null model of the form $G=\beta_0$ to this data, optimized for the value of $\beta_0$ which minimized the negative log likelihood, and then stored that negative log likelihood value.
 
 For our alternate model, we fit a generalized linear model of the form
 \[
@@ -67,6 +67,6 @@ G=g(X_1,X_2,X_3,)=\beta_0+\beta_1\cdot X_1+\beta_2\cdot X_2+\beta_3\cdot X_3+\ep
 \]
 Note that this is a function $g:\mathbb{R}^3\rightarrow\mathbb{R}$ so we defined our domain as a subset of $\mathbb{R}^3$.  $X_1$ took on the values $(0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0)$, $X_2$ took on the values $(0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0)$, and $X_3$ took on the values $(0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1)$.  The values of $1$ in these vectors correspond to the values of $G=g(X_1,X_2,X_3)$ for which the treatments **ab1**, **ab2**, and **ab3** were affected, respectively.
 
-We optimized the model $g(X_1,X_2,X_3)$ for values of the $\beta_i$ which minimized the negative likelihood and then stored this value.  Then we found $D$, which is twice the difference of our two stored negative likelihood values.  Using a one-tailed $\chi^2$ distribution with $3$ degrees of freedom --- the difference in the amount of parameters between the models --- we found the p-value associated with a $\chi$-score of $D$.  The p-value was approximately $2.97\cdot10^{-8}$.
+We optimized the model $g(X_1,X_2,X_3)$ for values of the $\beta_i$ which minimized the negative log likelihood and then stored this value.  Then we found $D$, which is twice the difference of our two stored negative log likelihood values.  Using a one-tailed $\chi^2$ distribution with $3$ degrees of freedom --- the difference in the amount of parameters between the models --- we found the p-value associated with a $\chi$-score of $D$.  The p-value was approximately $2.97\cdot10^{-8}$.
 
 As the p-value is smaller than $0.05$, we reject the null hypothesis and conclude that there is a significant difference between at least two of the means associated with different treatment types.  
