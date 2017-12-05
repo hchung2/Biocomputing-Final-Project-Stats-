@@ -8,6 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 library(knitr)
 library(papeR)
+library(gridExtra)
 ```
 
 ```{r readin,echo=FALSE}
@@ -16,12 +17,17 @@ antibiotics <- read.csv('antibiotics.csv', header = TRUE, sep = ",")
 
 A student has conducted an experiment evaluating the effect of three different antibiotics --- **ab1**, **ab2**, and **ab3** --- on the growth of *E. coli* in lab cultures.  The results are presented in graphical format below:
 
-```{r chicks, echo=FALSE}
-d = ggplot(data = antibiotics)
-d + geom_bar(aes(x=as.factor(trt),y=growth),stat="summary",
+```{r plot 2, echo=FALSE}
+d = ggplot(data = antibiotics, fig.width=5)
+require(gridExtra)
+plot1 = d + geom_boxplot(aes(y = antibiotics$growth, x = antibiotics$trt),fill="blue") + xlab("Treatment") + ylab("Average Growth ")
+plot2 = d + geom_bar(aes(x=as.factor(trt),y=growth),stat="summary",
              fun.y="mean",fill="blue",color="black") + theme_classic() +
             xlab("Treatment")+ylab("Average Growth ")
+grid.arrange(plot1,plot2,ncol=2)
 ```
+
+
 
 We also include charts summarizing the data: one for the overall dataset, one for each type of treatment, and one for the control.  Below is the overall summary:
 
