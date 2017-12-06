@@ -1,0 +1,13 @@
+Need to include units on graph as necessary
+
+Not sure why functions and statistical analyses are separated in two different R files.
+
+Use of folders to seperate similar files was helpful, and would be great if there was conmtinmued use through project finmish.
+
+Final PDF aesthetics very pleasinmg. 
+
+ANOVA and Regression code were better commented compared to statistical analyses files. 
+
+Project Plan PDF is great, but not all proposed projects have been completed. 
+
+Possibly find a wayu to delete " ## Factors found in summary" from kable
