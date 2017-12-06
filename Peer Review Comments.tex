@@ -1,0 +1,124 @@
+
+    \documentclass{article}
+    \usepackage{amsmath} 
+    \usepackage{graphicx} 
+    \usepackage{caption}
+    \usepackage{subcaption}
+    \usepackage{float}
+    \usepackage{hyperref}
+    \hypersetup{
+        colorlinks=true,
+        linkcolor=blue,
+        filecolor=magenta,      
+        urlcolor=cyan,
+    }
+     
+    \urlstyle{same}
+    \usepackage{xcolor}
+    \usepackage{cancel}
+    \usepackage{listings}
+    \usepackage[margin=1in]{geometry}
+    \usepackage{amssymb}
+    \usepackage{amsthm}
+    \usepackage{breqn}
+    \usepackage{enumerate}
+\usepackage{slashbox}
+\usepackage{mathtools}
+\usepackage{booktabs}
+
+\newcommand{\A}{$\mathcal{A}$}
+\newcommand{\B}{$\mathcal{B}$}
+\newcommand{\E}{$\mathcal{E}$}
+\newcommand{\F}{$\mathcal{F}$}
+\newcommand{\M}{$\mathcal{M}$}
+\newcommand{\Mbar}{$\bar{\mathcal{M}}$}
+\newcommand{\m}{$\mu$}
+\newcommand{\mbar}{$\bar{\mu}$}
+\newcommand{\Po}{$\mathcal{P}$}
+\newcommand{\s}{$\sigma$}
+
+    
+    \newtheorem{theorem}{Theorem}[section]
+    \newtheorem{lemma}[theorem]{Lemma}
+    \newtheorem{prop}[theorem]{Proposition}
+    \newtheorem{cor}[theorem]{Corollary}
+    
+    \theoremstyle{definition}
+    \newtheorem{definition}[theorem]{Definition}
+    \newtheorem{example}[theorem]{Example}
+    \newtheorem{xca}[theorem]{Exercise}
+    
+    \theoremstyle{remark}
+    \newtheorem{remark}[theorem]{Remark}
+
+\title{Peer Review Comments}
+\date{December 2017}
+
+\begin{document}
+
+\maketitle
+
+\begin{itemize}
+\item Write-up is very well done - including code and graphs helps explain the model.
+
+\item One thing, you can use math environment to typeset your equations.  e.g. you currently have
+
+$dh/dt=b*H*(1-alpha*H)-w*H*P/(d+H)$
+
+This can become $\frac{dH}{dt}=bH(1-\alpha)-\frac{wHP}{d+H}$ using the math environment in markdown and writing in TeX.  
+
+\item When you introduce your model you should explain what each of the parameters mean --- e.g., is $\alpha$ the birthrate?
+
+\item You may want to include a model description in the Lotke-Volterra write-up.  The one included for the R-M model makes it easier to understand.  Likewise, you may want to consider including the conceptual models in the write-up. This may not be relevant because the TA's/Stuart understand the model, but might be good form in general.
+
+\item The conceptual model for the $R-M$ model gives me a $404$ when I click on it.
+
+\item Code is well commented, explained well.  Seems to be written very efficiently.
+
+\item Probably a nitpick, but in the conclusion to the first questions it's mentioned that decreasing the prey birthrate makes the model more sustainable.  This is true depending on the starting point and how much you decrease it, but is not true in general --- if you decrease the birth rate to, say, zero then the model is not sustainable.  
+
+\item Is there pseudocode?  I don't know if it ought to be included in a final write-up, but you get graded on it so it might be worth including.  
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}$f^{-1}(\{0\})$
