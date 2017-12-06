@@ -1,0 +1,22 @@
+##MC Linear/ANOVA simulation
+
+#Set Parameters
+
+#For each type sd error (1,2,4,6,8,12,16,24)
+#Repeat 10 times
+
+#Generate random uniform numbers 0:50 for x
+#generate set of numbers y based off y = 0.4x +10
+#add some normally distributed error to y based on sd error
+
+##Linear Regression
+#test linear regression, same code as example question 2.
+
+##ANOVAs
+#generate a matrix to represent groups for 2,4,8 level ANOVAs
+#adjust functions to have additional variables in function based on level of ANOVA
+
+#keep output of Linear Regressiosn and test in a vector
+#Store the mean of that vector in a matrix
+
+#Final Output is matrix.
